@@ -4,13 +4,16 @@ def main():
 
     sentence = get_user_input()
 
+    if not valid_sentence(sentence):
+        print("Can't process this input")
+        return
 
-    # validate sentence  - -check for invalid chars or numbers
-    # put this into function - test the sentence is split into words correctly?
 
     words = split(sentence)
 
-    methodName = ""
+
+    method_name = ""
+
 
     first_word_done = False
 
@@ -23,14 +26,17 @@ def main():
         else:
             camel = camelcase_word(word)
 
-        methodName += camel
+        method_name += camel
 
-    display_output(methodName)
+    display_output(method_name)
 
 
 def get_user_input():
-
     return input("Enter sentence")
+
+
+def valid_sentence(sentence):
+    return True     # TODO - currently the test for this method fails
 
 
 def display_output(output):
