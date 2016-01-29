@@ -51,7 +51,7 @@ class TestCamelCase(unittest.TestCase):
                'zebra': 'Zebra',
                'ZEBRA': 'Zebra',
                'zEBRA': 'Zebra',
-               'zEbRa': 'zebra'}
+               'zEbRa': 'Zebra'}
 
         for wordInput in io:
             self.assertEqual(camelcase.camelcase_word(wordInput), io[wordInput])
