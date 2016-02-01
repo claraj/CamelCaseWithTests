@@ -1,3 +1,4 @@
+import re
 
 
 def main():
@@ -8,12 +9,9 @@ def main():
         print("Can't process this input")
         return
 
-
     words = split(sentence)
 
-
     method_name = ""
-
 
     first_word_done = False
 
@@ -36,7 +34,20 @@ def get_user_input():
 
 
 def valid_sentence(sentence):
-    return True     # TODO - currently the test for this method fails
+    """Writing this method over restrictive-- just the ASCII valid variable characters a-z, A-Z, _, and 0-9
+    https://docs.python.org/3/reference/lexical_analysis.html#identifiers
+    link explains that python 3 allows non-ASCII unicode
+    :param sentence str
+    :return bool
+    """
+    for i, ch in enumerate(sentence):
+        if i == 1:
+            if not re.match(r'([a-zA-Z_ ])', ch):
+                return False
+        else:
+            if not re.match(r'([a-zA-Z_ 0-9])', ch):
+                return False
+    return True
 
 
 def display_output(output):
@@ -64,4 +75,3 @@ def camelcase_word(word):
 
 if '__name__ ' == '__main__':
     main()
-
